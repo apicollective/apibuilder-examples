@@ -1,0 +1,128 @@
+{
+  "name": "examples-graphql-users",
+  "namespace": "io.apibuilder.examples.graphql.users",
+
+  "enums": {
+    "user_status": {
+      "values": [
+        { "name": "active" },
+        { "name": "inactive" }
+      ]
+    }
+  },
+
+  "unions": {
+    "user_patch_form": {
+      "discriminator": "discriminator",
+      "types": [
+        { "type": "user_status_patch_form" },
+        { "type": "user_email_patch_form" }
+      ]
+    }
+  },
+  
+  "models": {
+    "user": {
+      "fields": [
+        { "name": "id", "type": "uuid" },
+        { "name": "status", "type": "user_status" },
+        { "name": "email", "type": "string" }
+      ]
+    },
+
+    "user_form": {
+      "fields": [
+        { "name": "status", "type": "user_status", "required": false, "default": "active" },
+        { "name": "email", "type": "string" }
+      ]
+    },
+
+    "user_status_patch_form": {
+      "fields": [
+        { "name": "status", "type": "user_status" }
+      ]
+    },
+
+    "user_email_patch_form": {
+      "fields": [
+        { "name": "email", "type": "string" }
+      ]
+    }
+  },
+
+  "resources": {
+    "user": {
+      "operations": [
+        {
+          "method": "get",
+          "path": "/:id",
+          "responses": {
+            "200": { "type": "user" },
+            "404": { "type": "unit" }
+          },
+          "attributes": [
+            {
+              "name": "graphql",
+              "value": {
+                "name": "user"
+
+              }
+            }
+          ]
+        },
+        {
+          "method": "post",
+          "body": { "type": "user_form" },
+          "responses": {
+            "201": { "type": "user" },
+            "422": { "type": "[string]" }
+          },
+          "attributes": [
+            {
+              "name": "graphql",
+              "value": {
+                "name": "createUser"
+
+              }
+            }
+          ]
+        },
+        {
+          "method": "patch",
+          "body": { "type": "user_patch_form" },
+          "responses": {
+            "200": { "type": "user" },
+            "422": { "type": "[string]" }
+          },
+          "attributes": [
+            {
+              "name": "graphql",
+              "value": {
+                "name": "patchUser"
+
+              }
+            }
+          ]
+        },
+        {
+          "method": "delete",
+          "path": "/:id",
+          "responses": {
+            "204": { "type": "unit" },
+            "404": { "type": "unit" }
+          },
+          "attributes": [
+            {
+              "name": "graphql",
+              "value": {
+                "name": "deleteUser"
+
+              }
+            }
+          ]
+        }
+
+      ]
+    }
+  }
+}
