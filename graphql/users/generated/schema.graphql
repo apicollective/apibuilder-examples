@@ -51,6 +51,12 @@ type User {
   email: String!
 }
 
+# io.apibuilder.examples.graphql.users.models.user_form
+type UserForm {
+  status: UserStatus
+  email: String!
+}
+
 # io.apibuilder.examples.graphql.users.models.user_status_patch_form
 type UserStatusPatchForm {
   status: UserStatus!
@@ -61,25 +67,25 @@ type UserEmailPatchForm {
   email: String!
 }
 
-# io.apibuilder.examples.graphql.users.models.user_form
-type UserForm {
-  status: UserStatus
-  email: String!
-}
-
 # io.apibuilder.examples.graphql.users.unions.user_patch_form
 union UserPatchForm = UserStatusPatchForm | UserEmailPatchForm
 
 # io.apibuilder.examples.graphql.users.enums.user_patch_form_discriminator
 enum UserPatchFormDiscriminator {
-  USER_STATUS_PATCH_FORM
-  USER_EMAIL_PATCH_FORM
+  STATUS
+  EMAIL
 }
 
 # added automatically from io.apibuilder.examples.graphql.users.models.user
 input UserInput {
   id: String!
   status: UserStatus!
+  email: String!
+}
+
+# added automatically from io.apibuilder.examples.graphql.users.models.user_form
+input UserFormInput {
+  status: UserStatus
   email: String!
 }
 
@@ -90,12 +96,6 @@ input UserStatusPatchFormInput {
 
 # added automatically from io.apibuilder.examples.graphql.users.models.user_email_patch_form
 input UserEmailPatchFormInput {
-  email: String!
-}
-
-# added automatically from io.apibuilder.examples.graphql.users.models.user_form
-input UserFormInput {
-  status: UserStatus
   email: String!
 }
 

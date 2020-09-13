@@ -15,8 +15,8 @@
     "user_patch_form": {
       "discriminator": "discriminator",
       "types": [
-        { "type": "user_status_patch_form" },
-        { "type": "user_email_patch_form" }
+        { "type": "user_status_patch_form", "discriminator_value": "status" },
+        { "type": "user_email_patch_form", "discriminator_value": "email" }
       ]
     }
   },

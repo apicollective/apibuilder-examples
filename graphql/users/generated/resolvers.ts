@@ -13,8 +13,8 @@ export default {
   },
 
   UserPatchFormDiscriminator: {
-    USER_STATUS_PATCH_FORM: "user_status_patch_form",
-    USER_EMAIL_PATCH_FORM: "user_email_patch_form"
+    STATUS: "status",
+    EMAIL: "email"
   },
 
   Query: {
@@ -32,7 +32,11 @@ export default {
       switch (obj.discriminator) {
         case "user_status_patch_form":
           return "UserStatusPatchForm";
+        case "status":
+          return "UserStatusPatchForm";
         case "user_email_patch_form":
+          return "UserEmailPatchForm";
+        case "email":
           return "UserEmailPatchForm";
       }
       throw `Unable to resolve discriminator '${obj.discriminator}' for union 'UserPatchForm'`;
