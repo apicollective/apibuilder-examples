@@ -1,22 +1,26 @@
 type Query {
-  # Resource io.apibuilder.examples.graphql.users.models.user /users
+  # Resource io.apibuilder.examples.graphql.users.models.user
   # Operation 'GET /users/:id' response '200'
   # Response 200 user
   user(id: String!): User
 }
 
 type Mutation {
-  # Service examples-graphql-users /users
+  User: UserMutations
+}
+
+type UserMutations {
+  # Resource io.apibuilder.examples.graphql.users.models.user_input
   # Operation 'POST /users' response '201'
   # Response 201 user_input
   createUser(body: UserFormInput!): User
 
-  # Service examples-graphql-users /users
+  # Resource io.apibuilder.examples.graphql.users.models.user_input
   # Operation 'PATCH /users' response '200'
   # Response 200 user_input
   patchUser(body: UserPatchFormInput!): User
 
-  # Service examples-graphql-users /users
+  # Resource io.apibuilder.examples.graphql.users.models.user_input
   # Operation 'DELETE /users/:id' response '204'
   # Response 204 unit
   deleteUser(id: String!): Unit
