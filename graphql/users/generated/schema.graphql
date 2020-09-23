@@ -6,7 +6,7 @@ type Query {
 }
 
 type Mutation {
-  User: UserMutations
+  user: UserMutations
 }
 
 type UserMutations {

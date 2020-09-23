@@ -1,17 +1,19 @@
 import inputMapper from "../graphql/inputMapper";
 
 export default {
+  UserMutations: {
+    createUser: (_: any, { body }: { body: any }, { dataSources }: { dataSources: any }) =>
+      dataSources.api.post("/users", inputMapper("UserFormInput", body)),
+
+    patchUser: (_: any, { body }: { body: any }, { dataSources }: { dataSources: any }) =>
+      dataSources.api.patch("/users", inputMapper("UserPatchFormInput", body)),
+
+    deleteUser: (_: any, { id }: { id: string }, { dataSources }: { dataSources: any }) =>
+      dataSources.api.delete(`/users/${id}`, {})
+  },
+
   Mutation: {
-    User: {
-      createUser: (_: any, { body }: { body: any }, { dataSources }: { dataSources: any }) =>
-        dataSources.api.post("/users", inputMapper("UserFormInput", body)),
-
-      patchUser: (_: any, { body }: { body: any }, { dataSources }: { dataSources: any }) =>
-        dataSources.api.patch("/users", inputMapper("UserPatchFormInput", body)),
-
-      deleteUser: (_: any, { id }: { id: string }, { dataSources }: { dataSources: any }) =>
-        dataSources.api.delete(`/users/${id}`, {})
-    }
+    user: () => ({})
   },
 
   UserPatchFormDiscriminator: {
