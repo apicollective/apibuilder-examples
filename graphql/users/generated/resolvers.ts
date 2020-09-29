@@ -11,13 +11,13 @@ export default {
   },
 
   UserMutations: {
-    createUser: (_: any, { body }: { body: any }, { dataSources }: { dataSources: any }) =>
+    create: (_: any, { body }: { body: any }, { dataSources }: { dataSources: any }) =>
       dataSources.api.post("/users", inputMapper("UserFormInput", body)),
 
-    patchUser: (_: any, { body }: { body: any }, { dataSources }: { dataSources: any }) =>
+    patch: (_: any, { body }: { body: any }, { dataSources }: { dataSources: any }) =>
       dataSources.api.patch("/users", inputMapper("UserPatchFormInput", body)),
 
-    deleteUser: (_: any, { id }: { id: string }, { dataSources }: { dataSources: any }) =>
+    delete: (_: any, { id }: { id: string }, { dataSources }: { dataSources: any }) =>
       dataSources.api.delete(`/users/${id}`, {})
   },
 

@@ -85,38 +85,38 @@ export const models = new Models([
     new EnumValue("ACTIVE", "active"),
     new EnumValue("INACTIVE", "inactive")
   ]),
-  new ModelData("User", [
-    field("id", "id", "String", "scalar"),
-    field("status", "status", "UserStatus", "enum"),
-    field("email", "email", "String", "scalar")
-  ]),
-  new ModelData("UserForm", [
-    field("status", "status", "UserStatus", "enum"),
-    field("email", "email", "String", "scalar")
-  ]),
   new ModelData("UserStatusPatchForm", [
     field("status", "status", "UserStatus", "enum")
   ]),
   new ModelData("UserEmailPatchForm", [
     field("email", "email", "String", "scalar")
   ]),
+  new ModelData("UserForm", [
+    field("status", "status", "UserStatus", "enum"),
+    field("email", "email", "String", "scalar")
+  ]),
+  new ModelData("User", [
+    field("id", "id", "String", "scalar"),
+    field("status", "status", "UserStatus", "enum"),
+    field("email", "email", "String", "scalar")
+  ]),
   new EnumData("UserPatchFormDiscriminator", [
     new EnumValue("STATUS", "status"),
     new EnumValue("EMAIL", "email")
   ]),
-  new ModelData("UserInput", [
-    field("id", "id", "String", "scalar"),
-    field("status", "status", "UserStatus", "enum"),
+  new ModelData("UserStatusPatchFormInput", [
+    field("status", "status", "UserStatus", "enum")
+  ]),
+  new ModelData("UserEmailPatchFormInput", [
     field("email", "email", "String", "scalar")
   ]),
   new ModelData("UserFormInput", [
     field("status", "status", "UserStatus", "enum"),
     field("email", "email", "String", "scalar")
   ]),
-  new ModelData("UserStatusPatchFormInput", [
-    field("status", "status", "UserStatus", "enum")
-  ]),
-  new ModelData("UserEmailPatchFormInput", [
+  new ModelData("UserInput", [
+    field("id", "id", "String", "scalar"),
+    field("status", "status", "UserStatus", "enum"),
     field("email", "email", "String", "scalar")
   ]),
   new ModelData("UserPatchFormInput", [

@@ -13,17 +13,17 @@ type UserMutations {
   # Resource io.apibuilder.examples.graphql.users.models.user_input
   # Operation 'POST /users' response '201'
   # Response 201 user_input
-  createUser(body: UserFormInput!): User
+  create(body: UserFormInput!): User
 
   # Resource io.apibuilder.examples.graphql.users.models.user_input
   # Operation 'PATCH /users' response '200'
   # Response 200 user_input
-  patchUser(body: UserPatchFormInput!): User
+  patch(body: UserPatchFormInput!): User
 
   # Resource io.apibuilder.examples.graphql.users.models.user_input
   # Operation 'DELETE /users/:id' response '204'
   # Response 204 unit
-  deleteUser(id: String!): Unit
+  delete(id: String!): Unit
 }
 
 scalar DateIso8601
@@ -48,10 +48,13 @@ enum UserStatus {
   INACTIVE
 }
 
-# io.apibuilder.examples.graphql.users.models.user
-type User {
-  id: String!
+# io.apibuilder.examples.graphql.users.models.user_status_patch_form
+type UserStatusPatchForm {
   status: UserStatus!
+}
+
+# io.apibuilder.examples.graphql.users.models.user_email_patch_form
+type UserEmailPatchForm {
   email: String!
 }
 
@@ -61,13 +64,10 @@ type UserForm {
   email: String!
 }
 
-# io.apibuilder.examples.graphql.users.models.user_status_patch_form
-type UserStatusPatchForm {
+# io.apibuilder.examples.graphql.users.models.user
+type User {
+  id: String!
   status: UserStatus!
-}
-
-# io.apibuilder.examples.graphql.users.models.user_email_patch_form
-type UserEmailPatchForm {
   email: String!
 }
 
@@ -80,10 +80,13 @@ enum UserPatchFormDiscriminator {
   EMAIL
 }
 
-# added automatically from io.apibuilder.examples.graphql.users.models.user
-input UserInput {
-  id: String!
+# added automatically from io.apibuilder.examples.graphql.users.models.user_status_patch_form
+input UserStatusPatchFormInput {
   status: UserStatus!
+}
+
+# added automatically from io.apibuilder.examples.graphql.users.models.user_email_patch_form
+input UserEmailPatchFormInput {
   email: String!
 }
 
@@ -93,13 +96,10 @@ input UserFormInput {
   email: String!
 }
 
-# added automatically from io.apibuilder.examples.graphql.users.models.user_status_patch_form
-input UserStatusPatchFormInput {
+# added automatically from io.apibuilder.examples.graphql.users.models.user
+input UserInput {
+  id: String!
   status: UserStatus!
-}
-
-# added automatically from io.apibuilder.examples.graphql.users.models.user_email_patch_form
-input UserEmailPatchFormInput {
   email: String!
 }
 

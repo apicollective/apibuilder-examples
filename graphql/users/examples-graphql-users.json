@@ -81,7 +81,8 @@
             {
               "name": "graphql",
               "value": {
-                "name": "createUser"
+                "namespace": "User",
+                "name": "create"
 
               }
             }
@@ -98,7 +99,8 @@
             {
               "name": "graphql",
               "value": {
-                "name": "patchUser"
+                "namespace": "User",
+                "name": "patch"
 
               }
             }
@@ -115,8 +117,8 @@
             {
               "name": "graphql",
               "value": {
-                "name": "deleteUser"
-
+                "namespace": "User",
+                "name": "delete"
               }
             }
           ]
