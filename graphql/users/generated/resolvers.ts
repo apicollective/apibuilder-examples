@@ -1,6 +1,15 @@
 import inputMapper from "../graphql/inputMapper";
 
 export default {
+  Query: {
+    user: (_: any, { id }: { id: string }, { dataSources }: { dataSources: any }) =>
+      dataSources.api.get(`/users/${id}`)
+  },
+
+  Mutation: {
+    user: () => ({}) // UserMutations
+  },
+
   UserMutations: {
     createUser: (_: any, { body }: { body: any }, { dataSources }: { dataSources: any }) =>
       dataSources.api.post("/users", inputMapper("UserFormInput", body)),
@@ -10,25 +19,6 @@ export default {
 
     deleteUser: (_: any, { id }: { id: string }, { dataSources }: { dataSources: any }) =>
       dataSources.api.delete(`/users/${id}`, {})
-  },
-
-  Mutation: {
-    user: () => ({})
-  },
-
-  UserPatchFormDiscriminator: {
-    STATUS: "status",
-    EMAIL: "email"
-  },
-
-  Query: {
-    user: (_: any, { id }: { id: string }, { dataSources }: { dataSources: any }) =>
-      dataSources.api.get(`/users/${id}`)
-  },
-
-  UserStatus: {
-    ACTIVE: "active",
-    INACTIVE: "inactive"
   },
 
   UserPatchForm: {
@@ -45,5 +35,15 @@ export default {
       }
       throw `Unable to resolve discriminator '${obj.discriminator}' for union 'UserPatchForm'`;
     }
+  },
+
+  UserPatchFormDiscriminator: {
+    STATUS: "status",
+    EMAIL: "email"
+  },
+
+  UserStatus: {
+    ACTIVE: "active",
+    INACTIVE: "inactive"
   }
 }
