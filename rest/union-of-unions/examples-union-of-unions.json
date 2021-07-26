@@ -1,0 +1,42 @@
+{
+  "name": "examples-union-of-unions",
+
+  "unions": {
+    "party": {
+      "discriminator": "discriminator",
+      "types": [
+        { "type": "abstract_guest" },
+        { "type": "abstract_user" }
+      ]
+    },
+    "abstract_guest": {
+      "discriminator": "discriminator",
+      "types": [
+        { "type": "guest" }
+      ]
+    },
+    "abstract_user": {
+      "discriminator": "discriminator",
+      "types": [
+        { "type": "user" }
+      ]
+    }
+  },
+  
+  "models": {
+    "guest": {
+      "fields": [
+        { "name": "email", "type": "string", "required": false },
+        { "name": "name", "type": "string", "required": false }
+      ]
+    },
+
+    "user": {
+      "fields": [
+        { "name": "id", "type": "string" },
+        { "name": "email", "type": "string" },
+        { "name": "name", "type": "string", "required": false }
+      ]
+    }
+  }
+}
